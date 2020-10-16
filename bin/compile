@@ -11,7 +11,7 @@ ENV_DIR="$3"
 BP_DIR=`cd $(dirname $0); cd ..; pwd`
 
 POSTGREST_VER=${POSTGREST_VER:-7.0.1}
-CLEAR_CACHE=${CLEAR_CACHE:-1}
+CLEAR_CACHE=${CLEAR_CACHE:-0}
 
 export_env_dir() {
   local env_dir=${1:-$ENV_DIR}
@@ -39,7 +39,7 @@ fi
 ############# Library files ###############################
 
 if [ ! -e $CACHE_DIR/ghc-libs ]; then
-  LIBS_URL="https://github.com/PostgREST/postgrest-heroku/releases/download/v0.4.4.0/ghc-libs.tar.xz"
+  LIBS_URL="https://github.com/koenberkhout/dev-postgrest-buildpack/releases/download/v7.0.1/ghc-libs.tar.xz"
   if curl --output /dev/null --silent --head --fail $LIBS_URL; then
     echo "-----> Downloading and caching libraries for PostgREST"
     mkdir -p $CACHE_DIR
